@@ -2,6 +2,7 @@
 
 int main() {
     FILE* log = fopen("/var/log/test.log", "w");
-    printf("hello world!\n");
+    fprintf(log, "hello world!\n");
+    fclose(log);
     return 0;
 }

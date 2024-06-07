@@ -4,22 +4,21 @@ using std::string;
 
 class TAB {
     private:
-        string name;
+        string title;
     public:
-        TAB(string name, WINDOW* win) {
-            this->name = name;
+        TAB(string name) {
+            this->title = name;
         }
         string name() {
-            return name;
+            return title;
         }
-        string name(string name) {
-            this->name = name;
-            return name;
-        }
+        void newwin(WINDOW* win) {
+            wrefresh(win);}
         void refresh(WINDOW* win) {
             wrefresh(win);
         }
         bool delwin(WINDOW* win) {
+            wrefresh(win);
             return 1;
         }
 };
