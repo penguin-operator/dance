@@ -1,10 +1,9 @@
-src = $(wildcard src/*.cpp)
 lib = -lncurses
 
 all: dance
 
-dance: $(src)
-	g++ -o $@ $^ $(lib)
+dance:
+	g++ -o $@ src/main.cpp $(lib)
 
 clean:
 	rm -fr ./dance
