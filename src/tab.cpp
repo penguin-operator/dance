@@ -6,15 +6,19 @@ TAB::TAB(int height, int width, int y, int x) {
     this->y = y;
     this->x = x;
     this->win = newwin(height, width, y, x);
-    box(this->win, 0, 0);
     wrefresh(this->win);
+    nodelay(this->win, 1);
+    box(this->win, 0, 0);
 }
 
 void TAB::refresh () {
-    char c = getch();
-    for (auto& [k, v] : keybindings) {
-        if (c == k) {
-            v();
+    if (this->focus) {
+        char c = getch();
+        for (auto& [k, v] : this->events) {
+            if (c == k) {
+                v();
+            }
         }
     }
+    wrefresh(this->win);
 }
